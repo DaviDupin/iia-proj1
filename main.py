@@ -29,9 +29,16 @@ def is_valid(pops):
     return valid
 
 #recebendo a melhor rota disponível
-bestRoute = g.generateBestRoute(population=c.cities, popSize=100, eliteSize=20, mutationRate=0.01, generations=500)
+bestRoute = g.generateBestRoute(population=c.cities, popSize=20, eliteSize=10, mutationRate=0.01, generations=50)
+# cidades = []
 for i in range(0, len(bestRoute)):
+    cidades.append(nameList[ str(bestRoute[i].id) ])
     if(i+1 < len(bestRoute)):
         print(nameList[ str(bestRoute[i].id) ], bestRoute[i].distance(bestRoute[i+1].id))
     else:
         print(nameList[ str(bestRoute[i].id) ])
+
+# plt.plot(cidades)
+# plt.xlabel('Cidades')
+# # plt.xlabel('Generação')
+# plt.show()

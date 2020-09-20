@@ -155,8 +155,10 @@ def generateBestRoute(population, popSize, eliteSize, mutationRate, generations)
     print("Final distance: " + str(1/ranked[0][1]))
     bestRouteIndex = ranked[0][0]
     bestRoute = pop[bestRouteIndex]
+
+    #Plot dos dados em um gráfico
     plt.plot(progs)
     plt.ylabel('Distância')
-    plt.xlabel('Generação')
+    plt.xlabel('Geração')
     plt.show()
     return bestRoute
