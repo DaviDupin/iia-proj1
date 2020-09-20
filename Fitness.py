@@ -1,3 +1,5 @@
+#!/usr/bin/python
+# coding=UTF-8
 class Fitness:
     #Criando uma classe para calcular o Fitness de uma rota
     def __init__(self,route):

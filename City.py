@@ -1,3 +1,5 @@
+#!/usr/bin/python
+# coding=UTF-8
 class City:
     # criando lista de distancias; list_distances(id) = self.distance to city id
     def __init__(self, city_id, distances_array):

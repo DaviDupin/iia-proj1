@@ -1,5 +1,6 @@
-# The standard way to import NumPy:
-import matplotlib.pyplot as plt, array
+#!/usr/bin/python
+# coding=UTF-8
+import array
 from operator import itemgetter
 import City as c
 
@@ -28,11 +29,7 @@ def is_valid(pops):
             valid = False
     return valid
 
- 
-
-
-
-
+#recebendo a melhor rota disponível
 bestRoute = g.generateBestRoute(population=c.cities, popSize=50, eliteSize=10, mutationRate=0.01, generations=500)
 for i in range(0, len(bestRoute)):
     if(i+1 < len(bestRoute)):

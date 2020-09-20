@@ -1,3 +1,5 @@
+#!/usr/bin/python
+# coding=UTF-8
 import random, pandas as pd, operator, numpy as np
 import Fitness as f
 def naturalSelection(population, poolSize):
