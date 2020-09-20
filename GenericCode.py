@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # coding=UTF-8
-import random, pandas as pd, operator, numpy as np
+import random, pandas as pd, operator, numpy as np, matplotlib.pyplot as plt
 import Fitness as f
 def naturalSelection(population, poolSize):
     selectionResults = []
@@ -89,7 +89,7 @@ def mutate(individual, mutationRate):
                 individual[swapWith] = city1
     return individual
 
-def mutatePopulation(population, mutationRate):
+def crossOver(population, mutationRate):
     mutatedPop = []
     # print("populations..........:")
     # print(population[0][0].id)
@@ -103,8 +103,8 @@ def randomRoute(city):
     route = random.sample(city, len(city))
     return route
 
-#determina o fitness de uma população
-def rankRoutes(population):
+#determina o fitness de uma população de rotas
+def refinarRotas(population):
     fitnessResults = {}
     for i in range(0,len(population)):
         fitnessResults[i] = f.Fitness(population[i]).fitCalc() #para cada rota dentro da nossa população, calculamos o fitness
@@ -123,27 +123,40 @@ def firstGen(size, city_array):
         pop.append(randRoute) #por fim, adicionamos essa rota na nossa população
     return pop
 
+#calcula a próxima geração da população
 def proxGene(currentGen, eliteSize, mutationRate):
-    popRanked = rankRoutes(currentGen)
+    #recebe as rotas refinadas
+    popRanked = refinarRotas(currentGen)
 
+    #faz uma seleção das rotas
     selection = naturalSelection(popRanked, eliteSize)
 
+    #cria uma pool para possíveis 'pais' de reprodução
     matingpool = pool(currentGen, selection)
     
-    children = breedPopulation(matingpool, eliteSize)
+    #recebe os 'filhos' da matingPool
+    filhos = breedPopulation(matingpool, eliteSize)
 
-    nextGeneration = mutatePopulation(children, mutationRate)
+    #cria a proxima geração fazendo um crossover entre as rotas já existentes
+    nextGeneration = crossOver(filhos, mutationRate)
 
     return nextGeneration
 
-#retorna a melhor rota possível
+#retorna a melhor rota possível usando o algoritmo genérico
 def generateBestRoute(population, popSize, eliteSize, mutationRate, generations):
     pop = firstGen(popSize, population)
-    print("Distância Inicial: " + str(1 / rankRoutes(pop)[0][1]))
+    progs = []
+    progs.append(refinarRotas(pop)[0][1])
+    print("Distância Inicial: " + str(1/refinarRotas(pop)[0][1]))
     for i in range(0, generations):
         pop = proxGene(pop, eliteSize, mutationRate)
-    ranked = rankRoutes(pop)
-    print("Final distance: " + str(1 / ranked[0][1]))
+        progs.append(1/refinarRotas(pop)[0][1])
+    ranked = refinarRotas(pop)
+    print("Final distance: " + str(1/ranked[0][1]))
     bestRouteIndex = ranked[0][0]
     bestRoute = pop[bestRouteIndex]
+    plt.plot(progs)
+    plt.ylabel('Distância')
+    plt.xlabel('Generação')
+    plt.show()
     return bestRoute
