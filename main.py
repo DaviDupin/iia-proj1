@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # coding=UTF-8
-import array
+import matplotlib.pyplot as plt, array
 from operator import itemgetter
 import City as c
 
