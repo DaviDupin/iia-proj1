@@ -1,10 +1,24 @@
-# iia-proj1
-TSP genetic algorithm
+# IAA-Proj 1 
+### TSP genetic algorithm
+A genectic algorithm that solves the [Traveling Salesman Problem](https://en.wikipedia.org/wiki/Travelling_salesman_problem). 
 
-Using Python 3
-Dependencies: 
-    - pandas (pip3 install pandas)
-    - matplotlib (pip3 install matplotlib)
-    - numpy (pip3 install numpy)
-To run, use:
-python3 main.py
+Made by Davi Dupin (17/0140148) and Matheus Azevedo (17/0110940).
+
+## Dependencies
+- Python 3
+- Pandas 
+- Matplotlib 
+- NumPy 
+
+## Installing dependencies
+```bash
+$ pip3 install pandas
+$ pip3 install matplotlib
+$ pip3 install numpy
+```
+
+## Running
+
+```bash
+$ python3 main.py
+```
