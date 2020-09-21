@@ -152,7 +152,7 @@ def generateBestRoute(population, popSize, eliteSize, mutationRate, generations)
         pop = proxGene(pop, eliteSize, mutationRate)
         progs.append(1/refinarRotas(pop)[0][1])
     ranked = refinarRotas(pop)
-    print("Final distance: " + str(1/ranked[0][1]))
+    print("Distância Final: " + str(1/ranked[0][1]))
     bestRouteIndex = ranked[0][0]
     bestRoute = pop[bestRouteIndex]
 
