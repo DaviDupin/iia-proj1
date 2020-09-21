@@ -3,7 +3,7 @@
 import matplotlib.pyplot as plt, array
 from operator import itemgetter
 import City as c
-import GenericCode as g
+import GeneticCode as g
 
 #transforma as rotas em cidades pra ficar legível
 nameList = {
